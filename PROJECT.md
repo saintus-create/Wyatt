@@ -30,3 +30,17 @@ Language: US English
 ---
 
 <!-- Add your project customizations below this line -->
+
+## Wyatt Theme Focus
+This project is primarily focused on the **Wyatt** theme, which emphasizes a **data-centric, high-tech aesthetic**.
+
+### Key Visual Elements
+- **Interactive Grid Background**: A 3D-perspective grid with mouse-tracking highlights and scanline animations.
+- **Apple-Inspired Design**: Clean typography, subtle shadows (`ios-shadow`), and refined spacing.
+- **OKLCH Color Palette**: Leveraging Tailwind v4's OKLCH support for perceptually uniform colors.
+- **Data Visualization**: Using decorative elements and functional sections to highlight data intelligence.
+
+### Project Goals
+- Build a high-performance data visualization platform.
+- Maintain a consistent "techy" and professional look and feel.
+- Ensure full accessibility and SEO optimization.
