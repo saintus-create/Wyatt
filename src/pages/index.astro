@@ -39,13 +39,16 @@ const features = [
 ];
 ---
 
-<BaseLayout title="AstroDeck - Astro.js Starter Kit" description="Open-source Astro.js starter kit with ready-to-use components, shadcn/ui, Tailwind CSS, and TypeScript. Install and start building.">
+<BaseLayout title="Wyatt" description="Wyatt - A simple data page">
+  <!-- Light up grid background -->
+  <div class="light-up-grid absolute inset-0 pointer-events-none z-0"></div>
+  
   <Hero
     badge="true"
-    title="Your Astro project, ready to take off."
-    subtitle="AstroDeck is a production-ready <mark>Astro.js starter kit</mark> with pre-built components, shadcn/ui, dark mode, and TypeScript. <mark>Built AI-friendly</mark> with <mark>AGENTS.md</mark> – the open standard supported by OpenAI, GitHub, Google, and all major coding assistants. Plus a dedicated <mark>Claude Code Agent</mark> for intelligent project guidance."
-    primaryCta={{ href: "https://github.com/holger1411/astrodeck/archive/refs/tags/v1.5.1.zip", label: "Download" }}
-    secondaryCta={{ href: "https://github.com/holger1411/astrodeck", label: "GitHub" }}
+    title="Wyatt"
+    subtitle="A simple data page with a light-up grid background."
+    primaryCta={{ href: "#features", label: "Learn More" }}
+    secondaryCta={{ href: "#", label: "Contact" }}
   />
 
   <LogoCloud />
@@ -58,3 +61,90 @@ const features = [
     features={features}
   />
 </BaseLayout>
+
+<style is:global>
+  .light-up-grid {
+    background-image: 
+      linear-gradient(var(--color-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center;
+    opacity: 0.3;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .light-up-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at center, var(--color-primary) 0%, transparent 40%),
+      linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(59, 130, 246, 0.1) 40%, 
+        rgba(59, 130, 246, 0.3) 50%, 
+        rgba(59, 130, 246, 0.1) 60%, 
+        transparent 70%),
+      linear-gradient(-45deg, 
+        transparent 30%, 
+        rgba(59, 130, 246, 0.1) 40%, 
+        rgba(59, 130, 246, 0.3) 50%, 
+        rgba(59, 130, 246, 0.1) 60%, 
+        transparent 70%);
+    opacity: 0;
+    animation: gridGlow 3s ease-in-out infinite;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes gridGlow {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+  }
+
+  .light-up-grid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 50%,
+      transparent 0%,
+      transparent 45%,
+      var(--color-primary) 46%,
+      transparent 47%,
+      transparent 50%
+    );
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    animation: gridPulse 2s linear infinite;
+  }
+
+  @keyframes gridPulse {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translate(100px, 100px) scale(1.2);
+      opacity: 0.1;
+    }
+    50% {
+      transform: translate(200px, 0) scale(0.9);
+      opacity: 0.4;
+    }
+    75% {
+      transform: translate(100px, -100px) scale(1.1);
+      opacity: 0.2;
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.3;
+    }
+  }
+</style>
