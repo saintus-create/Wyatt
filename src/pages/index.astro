@@ -1,4 +1,3 @@
-
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
@@ -38,44 +37,16 @@ const features = [
     icon: "lock",
   },
 ];
-
-const insights = [
-  { label: "Real-time Processing", value: "1.2M ops/s", trend: "+12.5%" },
-  { label: "AI-Powered Analytics", value: "99.9% Accuracy", trend: "Optimized" },
-  { label: "Global Data Sync", value: "< 50ms Latency", trend: "Live" },
-];
 ---
 
-<BaseLayout title="Wyatt | Data Intelligence" description="Wyatt - A high-performance data visualization platform with a tech-centric aesthetic.">
-  <!-- Interactive Grid Background -->
-  <div class="grid-container absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-    <div class="interactive-grid"></div>
-    <div class="scanlines"></div>
-  </div>
-
+<BaseLayout title="Wyatt" description="Wyatt - A simple data page">
   <Hero
     badge="true"
     title="Wyatt"
-    subtitle="A high-performance data visualization platform with a tech-centric aesthetic."
-    primaryCta={{ href: "#insights", label: "Explore Data" }}
-    secondaryCta={{ href: "#", label: "Documentation" }}
+    subtitle="A simple data page with a professional blue color scheme."
+    primaryCta={{ href: "https://1024terabox.com/s/1SiKaVIUVQb2rzL4bqikcOw", label: "Download" }}
+    secondaryCta={{ href: "#", label: "Contact" }}
   />
-
-  <section id="insights" class="py-20 px-6 relative z-10">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {insights.map((insight) => (
-          <div class="ios-shadow bg-card/50 backdrop-blur-md border border-border p-8 rounded-2xl group hover:border-primary/50 transition-all duration-300">
-            <p class="text-sm font-medium text-muted-foreground mb-2 uppercase tracking-wider">{insight.label}</p>
-            <h3 class="text-3xl font-bold mb-4 ios-text">{insight.value}</h3>
-            <div class="inline-flex items-center px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-              {insight.trend}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <LogoCloud />
 
@@ -86,76 +57,4 @@ const insights = [
     subtitle="Built with modern technologies and best practices to help you ship faster."
     features={features}
   />
-
-  <script is:inline>
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      document.documentElement.style.setProperty('--mouse-x', `${x}%`);
-      document.documentElement.style.setProperty('--mouse-y', `${y}%`);
-    });
-  </script>
 </BaseLayout>
-
-<style is:global>
-  :root {
-    --mouse-x: 50%;
-    --mouse-y: 50%;
-  }
-
-  .grid-container {
-    perspective: 1000px;
-    height: 100vh;
-    width: 100%;
-  }
-
-  .interactive-grid {
-    position: absolute;
-    inset: -100% -50%;
-    background-image: 
-      linear-gradient(var(--color-border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: center;
-    transform: rotateX(60deg) translateY(-10%);
-    opacity: 0.15;
-    mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), black 0%, transparent 60%);
-    transition: mask-image 0.1s ease-out;
-  }
-
-  .dark .interactive-grid {
-    opacity: 0.25;
-    background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  }
-
-  .scanlines {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      transparent 50%,
-      rgba(0, 0, 0, 0.05) 51%,
-      transparent 52%
-    );
-    background-size: 100% 4px;
-    pointer-events: none;
-    opacity: 0.3;
-    animation: scanline 10s linear infinite;
-  }
-
-  @keyframes scanline {
-    from { background-position: 0 0; }
-    to { background-position: 0 100%; }
-  }
-
-  /* Techy glow effect */
-  .interactive-grid::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--color-primary) 0%, transparent 40%);
-    opacity: 0.1;
-  }
-</style>
